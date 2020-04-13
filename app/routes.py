@@ -7,11 +7,11 @@ from werkzeug.urls import url_parse
 from app import db
 from datetime import datetime
 
+
 @app.route('/')
 @app.route('/index')
 @login_required
 def index():
-    user = {'username': 'Bekjan'}
     posts = [
         {
             'author': {'username': 'John'},
@@ -20,7 +20,7 @@ def index():
         {
             'author': {'username': 'Susan'},
             'body': 'The Avengers movie was so cool!'
-        }, 
+        },
         {
             'author': {'username': 'Ипполит'},
             'body': 'Какая гадость эта ваша заливная рыба!!'
@@ -28,11 +28,13 @@ def index():
     ]
     return render_template('index.html', title='Home', posts=posts)
 
+
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.now()
         db.session.commit()
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -51,10 +53,12 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -71,6 +75,7 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html', title='Register', form=form)
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -81,11 +86,13 @@ def user(username):
     ]
     return render_template('user.html', user=user, posts=posts)
 
+
 @app.route('/user/list')
 @login_required
 def user_list():
     users = User.query.all()
     return render_template('users.html', users=users)
+
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -102,6 +109,7 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
+
 @app.route('/follow/<username>')
 @login_required
 def follow(username):
@@ -116,6 +124,7 @@ def follow(username):
     db.session.commit()
     flash(f'You are following {username}!')
     return redirect(url_for('user', username=username))
+
 
 @app.route('/unfollow/<username>')
 @login_required

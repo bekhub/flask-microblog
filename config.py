@@ -2,6 +2,7 @@ import os
 import logging
 from logging.handlers import SMTPHandler
 
+
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     SQLALCHEMY_DATABASE_URI = 'mysql://admin:admin@localhost/microblog'
