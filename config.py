@@ -1,6 +1,4 @@
 import os
-import logging
-from logging.handlers import SMTPHandler
 
 
 class Config(object):
@@ -13,3 +11,4 @@ class Config(object):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['bekambkg@gmail.com']
+    POSTS_PER_PAGE = 25
