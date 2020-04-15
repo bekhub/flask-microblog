@@ -1,4 +1,49 @@
-2020-04-13 18:59:34,425 ERROR: Exception on /index [GET] [in /home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+2020-04-15 18:08:28,320 ERROR: Exception on /favicon.ico [GET] [in /home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "/home/bekjan/Univer/python/microblog/app/errors.py", line 7, in not_found_error
+    return render_template('404.html'), 404
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/home/bekjan/Univer/python/microblog/app/templates/404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/bekjan/Univer/python/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends bootstrap/base.html %}
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'base' is undefined
+2020-04-15 18:19:53,329 INFO: Microblog startup [in /home/bekjan/Univer/python/microblog/app/__init__.py:46]
+2020-04-15 18:20:01,720 ERROR: Exception on / [GET] [in /home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,8 +59,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/bekjan/Univer/python/microblog/app/routes.py", line 23, in index
-    return render_template('index.html', title='Home', posts=posts)
+  File "/home/bekjan/Univer/python/microblog/app/routes.py", line 28, in index
+    return render_template('index.html', title='Home', form=form, posts=posts.items,
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
     return _render(
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
@@ -26,33 +71,40 @@ Traceback (most recent call last):
     reraise(*rewrite_traceback_stack(source=source))
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
     raise value.with_traceback(tb)
-  File "/home/bekjan/Univer/python/microblog/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/bekjan/Univer/python/microblog/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/bekjan/Univer/python/microblog/app/templates/index.html", line 6, in block "content"
-    {{ form.hidden_tag() }}
+  File "/home/bekjan/Univer/python/microblog/app/templates/index.html", line 2, in top-level template code
+    {% import "bootstrap/wtf.html" as wtf %}
+  File "/home/bekjan/Univer/python/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends bootstrap/base.html %}
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 471, in getattr
     return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2020-04-13 18:59:35,902 ERROR: Exception on /index [GET] [in /home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+jinja2.exceptions.UndefinedError: 'base' is undefined
+2020-04-15 18:20:01,803 ERROR: Exception on /favicon.ico [GET] [in /home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/bekjan/Univer/python/microblog/app/routes.py", line 23, in index
-    return render_template('index.html', title='Home', posts=posts)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "/home/bekjan/Univer/python/microblog/app/errors.py", line 7, in not_found_error
+    return render_template('404.html'), 404
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
     return _render(
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
@@ -63,54 +115,11 @@ Traceback (most recent call last):
     reraise(*rewrite_traceback_stack(source=source))
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
     raise value.with_traceback(tb)
-  File "/home/bekjan/Univer/python/microblog/app/templates/index.html", line 1, in top-level template code
+  File "/home/bekjan/Univer/python/microblog/app/templates/404.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/home/bekjan/Univer/python/microblog/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/bekjan/Univer/python/microblog/app/templates/index.html", line 6, in block "content"
-    {{ form.hidden_tag() }}
+  File "/home/bekjan/Univer/python/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends bootstrap/base.html %}
   File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 471, in getattr
     return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2020-04-13 18:59:38,656 ERROR: Exception on /index [GET] [in /home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/bekjan/Univer/python/microblog/app/routes.py", line 23, in index
-    return render_template('index.html', title='Home', posts=posts)
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
-    return _render(
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/home/bekjan/Univer/python/microblog/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/bekjan/Univer/python/microblog/app/templates/base.html", line 36, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/bekjan/Univer/python/microblog/app/templates/index.html", line 6, in block "content"
-    {{ form.hidden_tag() }}
-  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 471, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2020-04-13 19:02:04,281 INFO: Microblog startup [in /home/bekjan/Univer/python/microblog/app/__init__.py:42]
-2020-04-13 19:12:34,147 INFO: Microblog startup [in /home/bekjan/Univer/python/microblog/app/__init__.py:42]
-2020-04-13 19:23:11,516 INFO: Microblog startup [in /home/bekjan/Univer/python/microblog/app/__init__.py:42]
-2020-04-13 19:24:41,509 INFO: Microblog startup [in /home/bekjan/Univer/python/microblog/app/__init__.py:42]
-2020-04-13 19:38:01,108 INFO: Microblog startup [in /home/bekjan/Univer/python/microblog/app/__init__.py:42]
+jinja2.exceptions.UndefinedError: 'base' is undefined
+2020-04-15 18:20:47,557 INFO: Microblog startup [in /home/bekjan/Univer/python/microblog/app/__init__.py:46]

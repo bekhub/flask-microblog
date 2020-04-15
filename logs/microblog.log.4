@@ -1,0 +1,123 @@
+2020-04-13 18:39:42,737 ERROR: Exception on /login [POST] [in /home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/engine/strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 490, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/MySQLdb/__init__.py", line 84, in Connect
+    return Connection(*args, **kwargs)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/MySQLdb/connections.py", line 179, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+MySQLdb._exceptions.OperationalError: (2002, "Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/bekjan/Univer/python/microblog/app/routes.py", line 45, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3300, in first
+    ret = list(self[0:1])
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3078, in __getitem__
+    return list(res)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3405, in __iter__
+    return self._execute_and_instances(context)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3426, in _execute_and_instances
+    conn = self._get_bind_args(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3441, in _get_bind_args
+    return fn(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3420, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1130, in connection
+    return self._connection_for_bind(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1138, in _connection_for_bind
+    return self.transaction._connection_for_bind(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2251, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2288, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1554, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 139, in _do_get
+    self._dec_overflow()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 136, in _do_get
+    return self._create_connection()
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/engine/strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 490, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/MySQLdb/__init__.py", line 84, in Connect
+    return Connection(*args, **kwargs)
+  File "/home/bekjan/Univer/python/microblog/venv/lib/python3.8/site-packages/MySQLdb/connections.py", line 179, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+sqlalchemy.exc.OperationalError: (MySQLdb._exceptions.OperationalError) (2002, "Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)")
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2020-04-13 18:41:44,735 INFO: Microblog startup [in /home/bekjan/Univer/python/microblog/app/__init__.py:42]
+2020-04-13 18:59:30,331 INFO: Microblog startup [in /home/bekjan/Univer/python/microblog/app/__init__.py:42]
